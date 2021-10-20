@@ -23,6 +23,12 @@ window.onload = () => {
 
     button.addEventListener('click', e => {
         fetchImage();
+        points = 0;
+        score.innerText = `Popularity Score: ${points}`;
+        const comments = document.getElementsByTagName("figcaption");
+        Array.from(comments).forEach((comment) => {
+            comment.remove();
+        })
     })
 
     // Popularity Score
@@ -66,4 +72,17 @@ window.onload = () => {
         section.appendChild(figCaption);
     })
 
+
+    //Delete comment
+
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete Comment";
+    document.body.append(deleteButton);
+
+    deleteButton.addEventListener('click', e => {
+        let comments = document.getElementsByTagName("figcaption");
+        comments = Array.from(comments);
+        const lastComment = comments[comments.length - 1];
+        lastComment.remove();
+    })
 };
