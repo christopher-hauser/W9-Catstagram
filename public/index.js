@@ -51,9 +51,19 @@ window.onload = () => {
 
 
     // Form for comments
-    const form = document.createElement("form");
     const textarea = document.createElement("textarea");
-    form.append(textarea);
-    document.body.append(form);
+    const submitComment = document.createElement("button");
+    submitComment.innerText = "Submit";
+    document.body.append(textarea);
+    document.body.append(submitComment);
+
+    submitComment.addEventListener('click', e => {
+        e.preventDefault();
+        const figCaption = document.createElement("figcaption");
+        figCaption.innerText = textarea.value;
+        console.log(textarea.value);
+        const section = document.getElementsByTagName("section")[0];
+        section.appendChild(figCaption);
+    })
 
 };
